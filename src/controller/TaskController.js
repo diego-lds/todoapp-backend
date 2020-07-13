@@ -13,6 +13,18 @@ class TaskController {
                 return res.status(500).json(error)
             })
     }
+
+    async update(req, res) {
+        await TaskModel
+            .findByIdAndUpdate(req.params.id, req.body, { new: true }) // new devolve a tarefa ja modificada
+            .then(response => {
+                return res.status(200).json(response)
+            })
+            .catch(error => {
+                return res.status(500).json(error)
+            })
+
+    }
 }
 
 module.exports = new TaskController();
