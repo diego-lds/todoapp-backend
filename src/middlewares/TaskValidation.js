@@ -24,7 +24,7 @@ const TaskValidation = async (req, res, next) => {
             'macaddress': { '$eq': macaddress }
         })
 
-        if (exists) return res.status(400).json({ error: `Registro não pode ter data repetida, ${exists.title}` })
+        if (exists) return res.status(400).json({ error: `Registro não pode ter dia e hora repetida; "${exists.title}"` })
 
         next();
     }
